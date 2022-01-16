@@ -3,7 +3,7 @@ function createMap(accidents) {
     // Create the tile layer that will be the background of our map.
     var streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    });
   
     // Create a baseMaps object to hold the streetmap layer.
     var baseMaps = {
@@ -53,4 +53,4 @@ function createMap(accidents) {
   }
   
   // Perform an API call to the Citi Bike API to get the station information. Call createMarkers when it completes.
-  d3.json("data.json").then(createMarkers);
+  d3.json("http://127.0.0.1:5000/accident-data/?index=true").then(createMarkers);

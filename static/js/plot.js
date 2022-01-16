@@ -2,10 +2,10 @@
 let car_model = []
 let outcome = []
 
-d3.json("http://127.0.0.1:5000/accident-data/").then(function(data) {
+d3.json("http://127.0.0.1:5000/accident-data/").then(function(metaData) {
 // For loop to populate arrays
-  for (let i = 0; i < data.length; i++) {
-      row = data.case_number[i];
+  for (let i = 0; i < metaData.length; i++) {
+      row = metaData.case_number[i];
       car_model.push(row.vehicle_model);
       outcome.push(row.doa_status);
     }
@@ -20,7 +20,7 @@ d3.json("http://127.0.0.1:5000/accident-data/").then(function(data) {
     
     // Create data array
     //  let data = [trace1, trace2];
-    let data = [trace1]
+    let chartData = [trace1]
   
     // Apply a title to the layout
     let layout = {
@@ -28,5 +28,5 @@ d3.json("http://127.0.0.1:5000/accident-data/").then(function(data) {
   };
   
     // Render the plot to the div tag with id "plot"
-    Plotly.newPlot("plot-id", data, layout);
+    Plotly.newPlot("plot-id", chartData, layout);
 });

@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="contianer">
-  <h1>Crash Dummies</h1>
-</div>
-<!-- Leaflet -->
-  <div id="map-id"></div>
+
+
 
   <!-- Plotly -->
+  
   <div id="plot-id"></div>
 
-  <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/plot.js') }}"></script>  
+
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/charts.js') }}"></script>  
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}"></script> 
 
 {% endblock content %}

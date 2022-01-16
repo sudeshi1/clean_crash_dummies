@@ -23,7 +23,7 @@ def index():
 @app.route("/states/")
 def state_list():
 
-    months = ["January", "February", "December"]
+    months = ["January", "February", "March", "April", "May","June", "July", "August", "September", "October", "November", "December"]
 
     states = DB.states()
     return render_template("chart.html", months=months, states=states)

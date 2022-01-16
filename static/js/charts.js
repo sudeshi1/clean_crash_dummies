@@ -33,10 +33,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     // Trace1 Vehicle Model Data
     let trace1 = {
-      x: car_model,
-      y: outcome,
-      name: "Vehicle Model Accident Outcomes",
-      type: "bar",
+      values: car_model,
+      labels: outcome,
+      type: "pie",
     };
 
     // Create data array
@@ -46,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     // Apply a title to the layout
     let layout = {
       title: "Fatal & Non-Fatal Outcomes by Vehicle Model",
+      height: 400,
+      width: 500
     };
 
     // Render the plot to the div tag with id "plot"

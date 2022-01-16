@@ -1,6 +1,24 @@
 {% extends "base.html" %}
 
+
+
 {% block content %}
+
+
+<div>
+  <style>
+    #map-id,
+    body,
+    html {
+      height: 80%;
+    }
+  </style>
+
+
+
+</div>
+
+
   <div class="container">
     <div class="row">
       <div class="col" class="md-6">
@@ -20,10 +38,14 @@
     </div>
   </div>
 
-  
+
+  <!-- Leaflet -->
+  <div id="map-id"></div>
+
   <div id="plot-id"></div>
 
   <script type="text/javascript" src="{{ url_for('static', filename='js/charts.js') }}"></script>  
+  <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}"></script>  
 
 {% endblock content %}
 

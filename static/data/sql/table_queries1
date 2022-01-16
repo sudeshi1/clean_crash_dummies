@@ -1,0 +1,125 @@
+SELECT * FROM accidents;
+SELECT * FROM people;
+SELECT * FROM vehicle;
+
+-- Displaying states where the most accidents occur
+SELECT accidents.state, count(case_number) AS Accidents_Count
+FROM accidents
+GROUP BY accidents.state
+ORDER BY Count (*) DESC;
+
+-- Vehicle manufacturer and model with the most accidents
+SELECT people.vehicle_model, people.vehicle_manufacturer, count (people.case_number) as Accidents_Count
+FROM people
+GROUP BY people.vehicle_model, people.vehicle_manufacturer
+ORDER BY Count (*) DESC;
+
+-- Most accidents by vehicle model in each state
+SELECT accidents.state, people.vehicle_model, count (people.case_number) as Accidents_Count
+FROM accidents
+JOIN people
+ON accidents.case_number = people.case_number
+GROUP BY accidents.state, people.vehicle_model
+ORDER BY Count (*) DESC;
+
+-- Vehicle models and manufacturers with the most fatal accidents
+SELECT vehicle_model, doa_status, vehicle_manufacturer, count (case_number) AS Accidents_Count
+FROM people
+WHERE doa_status = 'Fatal'
+GROUP BY vehicle_model, doa_status, vehicle_manufacturer
+ORDER BY Count(case_number) DESC;
+
+-- Vehicle models and manufacturers with the most non-fatal accidents
+SELECT vehicle_model, doa_status, vehicle_manufacturer, Count (case_number) AS Accidents_Count
+FROM people
+WHERE doa_status = 'No Fatality'
+GROUP BY vehicle_model, doa_status, vehicle_manufacturer
+ORDER BY Count(case_number) DESC;
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+-- Breakdown of accidents by state by age
+SELECT accidents.state, people.age, people.age_label, Count (accidents.case_number) AS Accidents_Count
+FROM accidents
+JOIN people
+ON accidents.case_number = people.case_number
+GROUP BY accidents.state, people.age, people.age_label
+ORDER BY Count (*) DESC;
+
+-- Age and Age group with the most accidents
+SELECT people.age, people.age_label, Count (case_number) AS Accidents_Count
+FROM people
+GROUP BY people.age, people.age_label
+ORDER BY Count(case_number) DESC;
+
+-- Age groups with most accidents
+SELECT people.age_label, Count (case_number) AS Accidents_Count
+FROM people
+GROUP BY people.age_label
+ORDER BY Count(case_number) DESC;
+
+-- Age and Age group with the most non-fatal accidents
+SELECT people.age, people.age_label, doa_status, Count (case_number) AS Accidents_Count
+FROM people
+WHERE doa_status = 'No Fatality'
+GROUP BY people.age, people.age_label, doa_status
+ORDER BY Count(case_number) DESC;
+
+-- Age and Age group with the most fatal accidents
+SELECT people.age, people.age_label, doa_status, Count (case_number) AS Accidents_Count
+FROM people
+WHERE doa_status = 'Fatal'
+GROUP BY people.age, people.age_label, doa_status
+ORDER BY Count(case_number) DESC;
+
+-- Gender Demographics
+SELECT count(case_number) as Accidents_Count, sex
+FROM people
+GROUP BY sex
+ORDER BY count(case_number) DESC;
+
+-- Gender Demographics by age
+SELECT people.sex, people.age, count(people.case_number) as Accidents_Count
+FROM people
+GROUP BY sex, age
+ORDER BY count(case_number) DESC;
+
+-- Breakdown of accidents by state by gender
+SELECT a.state, p.sex, Count (a.case_number) AS Accidents_Count
+FROM accidents as a
+JOIN people as p
+ON a.case_number = p.case_number
+GROUP BY a.state, p.sex
+ORDER BY Count (*) DESC;
+
+-- Count of hit and run cases
+SELECT count(case_number), hit_run
+FROM vehicle
+GROUP BY hit_run
+ORDER BY count(*) DESC;
+
+-- Count of hit and run cases by gender
+SELECT v.hit_run, p.sex, count(v.case_number) as Accident_Count
+FROM vehicle as v
+JOIN people as p
+ON v.case_number = p.case_number
+GROUP BY p.sex, v.hit_run
+ORDER BY count(v.case_number) DESC;
+
+-- Count of hit and run cases by rural_urban area
+SELECT v.hit_run, a.rural_urban, count(v.case_number) as Accident_Count
+FROM vehicle as v
+JOIN accidents as a
+ON v.case_number = a.case_number
+GROUP BY a.rural_urban, v.hit_run
+ORDER BY count(*) DESC;
+
+
+
+
+select a.case_number, v.hit_run, p.sex
+from accidents as a
+join vehicle as v
+
+
+

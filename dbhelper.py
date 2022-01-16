@@ -55,9 +55,10 @@ class DBHelper:
         connection = self.connect()
 
         try:
-            states = connection.get("state")
-
-            return list(states)
+            query = '''SELECT state FROM accidents;'''
+            df = pd.read_sql(query, connection)
+            
+            return list(df.state.unique())
 
         finally:
             connection.close()

@@ -2,7 +2,7 @@
 let car_model = []
 let outcome = []
 
-d3.json("data.json").then(function(data) {
+d3.json("http://127.0.0.1:5000/accident-data/").then(function(data) {
 // For loop to populate arrays
   for (let i = 0; i < data.length; i++) {
       row = data.case_number[i];

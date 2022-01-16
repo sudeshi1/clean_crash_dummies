@@ -19,21 +19,22 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/states")
+@app.route("/states/")
 def state_list():
 
-    states = state_list()
-    return render_template("map.html", states=states)
+    states = DB.states()
+    return render_template("chart.html", states=states)
+
 
 
     
-@app.route("/accident-data")
+@app.route("/accident-data/")
 def accident_data():
     metaData = jsonify(DB.get_data()) 
     return (metaData)
 
 
-@app.route("/plots") 
+@app.route("/plots/") 
 def accident_plot():
 
     metaData = jsonify(DB.get_data())

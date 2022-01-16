@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- D3 library -->
-  <script src="../static/js/Libs/d3.v5.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 
   <!-- Plotly library -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -28,18 +28,11 @@
 </head>
   <div id="station-list">
     <div id="container">
-      {% for station in stations%}
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ station.name }}</h5>
-            <p class="card-text">Located in {{ station.name }}, this station has a capacity of {{ station.capacity }}</p>
-            <a href="{{ station.rental_uris.ios }}" class="btn btn-primary">Rent</a>
-          </div>
-        </div>
+      {% for station in states%}
+       {{ station }}
       {% endfor %}
     </div>
 
-  <div>
+  </html> 
 
     <div id="plot-id"><div>

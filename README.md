@@ -36,7 +36,11 @@ The goal with this project is to create a map of all accidents across the U.S., 
 
 2. Loaded the datasets on PGAdmin as a DB
 
+![DB](/static/images/db.png)
+
 3. Used *Flask* routes to get webpage up and running
+
+![Flask Routes](/static/images/flask.jpg)
 
 ## Final Webpage Output
 

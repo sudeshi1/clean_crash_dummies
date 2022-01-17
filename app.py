@@ -14,28 +14,31 @@ from dbhelper import DBHelper
 app = Flask(__name__)
 DB = DBHelper()
 
+
+
+
+#################################################################   
+
+
 @app.route("/")
 def index():
     """This is the index or home route."""
-    return render_template("index.html")
-
-
-@app.route("/states/")
-def state_list():
-
+    
     months = ["January", "February", "March", "April", "May","June", "July", "August", "September", "October", "November", "December"]
 
     states = DB.states()
     return render_template("chart.html", months=months, states=states)
 
-    
+#################################################################   
+
+
 @app.route("/accident-data/")
 def accident_data():
     # print(request.args.get("month"))
     metaData = DB.get_data()
 
     if request.args.get("index"):
-        metaData = metaData[:400]
+        metaData = metaData[:200]
 
     elif request.args.get("month"):
         month = request.args.get("month")
@@ -47,6 +50,20 @@ def accident_data():
 
     return jsonify(metaData)
 
+#################################################################   
+
+@app.route("/states/")
+def state_list():
+
+    months = ["January", "February", "March", "April", "May","June", "July", "August", "September", "October", "November", "December"]
+
+    states = DB.states()
+    return render_template("chart.html", months=months, states=states)
+
+    
+#################################################################   
+
+
 
 @app.route("/plots/") 
 def accident_plot():
@@ -54,6 +71,9 @@ def accident_plot():
     metaData = jsonify(DB.get_data())
     return render_template("chart.html", metaData=metaData)
 
+
+
+#################################################################   
 
 
 if __name__ == '__main__':

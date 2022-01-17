@@ -54,6 +54,6 @@ function createMap(accidents) {
   
   // Perform an API call to the Citi Bike API to get the station information. Call createMarkers when it completes.
   
-  d3.json("http://127.0.0.1:5000/accident-data/?index=True").then(createMarkers);
+  // d3.json("http://127.0.0.1:5000/accident-data/?").then(createMarkers);
 
-  // d3.json("http://127.0.0.1:5000/accident-data/?index=true").then(createMarkers);
+  d3.json("http://127.0.0.1:5000/accident-data/?index=true").then(createMarkers);

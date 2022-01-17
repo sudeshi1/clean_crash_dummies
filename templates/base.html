@@ -56,21 +56,27 @@
 
 <body>
 
-  
+
 
   <div class="card">
     <div class="card-body">
     This web page will allow you to be able to get accident information from each state in the year 2019.
-    </div>
+ 
   </div>
 
+      <div id="plot-id"></div>
+      <div id="line-id"></div>
 
-
-  <body>
+  </div>
+  
+  
   {% block content %}
+
+
   {% endblock content %}
 
-  <div id="plot-id"></div>
+  
+  <script type="text/javascript" src="{{ url_for('static', filename='js/charts.js') }}"></script> 
 
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
   d3.select("#months").on("change", function (data) {
     let month = d3.select("#months").node().value;
 
+
+
     let url = `http://127.0.0.1:5000/accident-data/?month=${month}`;
     d3.json(url).then(function (response) {
       // console.log(response);
@@ -23,19 +25,34 @@ document.addEventListener("DOMContentLoaded", function (e) {
   function plotData(data) {
     let car_model = [];
     let outcome = [];
-
+    let count = 1;
+    var counter = ""
     // For loop to populate arrays
     for (let i = 0; i < data.length; i++) {
-      row = data[i];
-      car_model.push(row.vehicle_model);
-      outcome.push(row.doa_status);
-    }
+        
+      
+        row = data[i];
+        car_model.push(row.vehicle_model)
+        outcome.push(row.doa_status)
 
-    // Trace1 Vehicle Model Data
+        if (outcome[i] == outcome[i+1])
+        {
+            count +=1;
+        }
+            else
+        {
+            counter += outcome[i] + count;
+            count=1;
+
+}
+    }    
+    
+
+    // Trace1 Vehicle Model Data (count of vehicle type involved in accidents)
     let trace1 = {
-      values: car_model,
-      labels: outcome,
-      type: "pie",
+      x: car_model,
+      y: counter,
+      type: "bar",
     };
 
     // Create data array
@@ -44,12 +61,37 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     // Apply a title to the layout
     let layout = {
-      title: "Fatal & Non-Fatal Outcomes by Vehicle Model",
       height: 400,
       width: 500
     };
 
     // Render the plot to the div tag with id "plot"
     Plotly.newPlot("plot-id", chartData, layout);
-  }
-});
+  
+
+    // line chart
+    var trace2 = {
+
+        x: ["January", "February", "March", "April", "May","June", "July", "August", "September", "October", "November", "December"],
+        y: outcome,
+        type: 'line'
+      };
+      
+      var linedata = [trace2];
+      
+      
+      Plotly.newPlot('line-id', linedata);
+
+}
+
+
+
+
+})
+;
+
+
+
+
+
+// title: "Fatal & Non-Fatal Outcomes by Vehicle Model",

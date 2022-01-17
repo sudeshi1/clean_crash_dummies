@@ -28,10 +28,22 @@ The goal with this project is to create a map of all accidents across the U.S., 
 
 1. Extracted and cleaned datasets -> *accidents, person & vehicle*
 
+![Accidents](/static/images/accidents.png)
+
+![People](/static/images/people.png)
+
+![Vehicle](/static/images/vehicle.png)
+
 2. Loaded the datasets on PGAdmin as a DB
 
 3. Used *Flask* routes to get webpage up and running
 
 ## Final Webpage Output
+
+![Map Output](/static/images)
+
+![Plots](/static/images)
+
+![Dropdown Menu](/static/images)
 
 ![Final Webpage](/static/images/)
